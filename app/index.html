@@ -1,11 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="title"><span>Login Form</span></div>
+        <form id="formid" class="formclass">
+          <div class="row">
+            <input type="text" id="emailid" placeholder="Email" required />
+          </div>
+          <p id="email-error">Please enter a valid email</p>
+          <div class="row">
+            <input
+              type="text"
+              id="passwordid"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <p id="password-error">password minimum of 8 include special char</p>
+          <div class="row button">
+            <input type="submit" id="submitbtn" value="Login" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>
