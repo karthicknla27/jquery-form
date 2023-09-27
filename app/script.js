@@ -1,43 +1,51 @@
 $(document).ready(function () {
-    const User = [];
     $("#email-error").hide();
     $("#password-error").hide();
+    $("#eye").click(function () {
+      if ($("#eye").hasClass("fas fa-eye-slash")) {
+        $("#eye").removeClass("fas fa-eye-slash");
+        $("#eye").addClass("fas fa-eye");
+        $("#passwordid").attr("type", "text");
+      } else {
+        $("#eye").removeClass("fas fa-eye");
+        $("#eye").addClass("fas fa-eye-slash");
+        $("#passwordid").attr("type", "password");
+      }
+    });
+  
     function validate() {
-      let email = document.getElementById("emailid").value;
-      let password = document.getElementById("passwordid").value;
+      let email = $("#emailid").val();
+      let password = $("#passwordid").val();
       let emailRegex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
       let passwordRegex =
         /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!.@$%^&*-]).{8,}$/;
       let emailResult = emailRegex.test(email);
       let passwordResult = passwordRegex.test(password);
-      if (emailResult == false) {
+      if (!emailResult) {
         $("#email-error").show();
-        return false;
+        $("#password-error").hide();
+        return;
       }
-      if (passwordResult == false) {
+      if (!passwordResult) {
         $("#password-error").show();
-        return false;
+        $("#email-error").hide();
+        return;
+      } else {
+        const email = $("#emailid").val();
+        const password = $("#passwordid").val();
+        const item = {
+          email: email,
+          password: password,
+        };
+        console.log(item);
+  
+        $("#formid")[0].reset();
+        $("#email-error").hide();
+        $("#password-error").hide();
       }
-      return true;
     }
     $("#submitbtn").click(function (e) {
       e.preventDefault();
       validate();
-      const email = $("#emailid").val();
-      const password = $("#passwordid").val();
-      const item = {
-        id: new Date().getTime(),
-        email: email,
-        password: password,
-      };
-      User.push(item);
-      console.log(User);
-  
-      $("#formid")[0].reset();
     });
   });
-  // $(document).ready(function () {
-  //   $("#submitbtn").click(function () {
-  //     $("#show").text($("form").serialize());
-  //   });
-  // });
